@@ -56,7 +56,16 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(accentColor: Colors.white, primaryColor: Colors.white),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+        primaryColor: Colors.black,
+        brightness: Brightness.dark,
+        backgroundColor: const Color(0xFF212121),
+        accentColor: Colors.white,
+        accentIconTheme: IconThemeData(color: Colors.black),
+        dividerColor: Colors.black12,
+      ),
       home: DefaultTabController(
         length: 2,
         initialIndex: 0,
@@ -64,27 +73,10 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: const Text('RGB Remote control'),
             centerTitle: true,
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  icon: Icon(MdiIcons.remoteTv),
-                  text: "Remote 1",
-                ),
-                Tab(
-                  icon: Icon(MdiIcons.remoteTv),
-                  text: "Remote 2",
-                ),
-              ],
-            ),
           ),
           body: Container(
             alignment: Alignment.center,
-            child: TabBarView(
-              children: [
-                RemoteOne(),
-                RemoteTwo(),
-              ],
-            ),
+            child: RemoteTwo(),
           ),
         ),
       ),
